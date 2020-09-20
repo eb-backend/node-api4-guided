@@ -7,8 +7,9 @@ const router = express.Router();
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+  res.status(200).json({message: `Welcome ${process.env.COHORT}`, fact:process.env.FUN_FACT || "I have no fun fact"})
 });
+
 
 router.get("/shouts", (req, res, next) => {
   Shouts.find()
@@ -40,6 +41,7 @@ router.delete("/shouts/:id", (req, res) => {
 
 router.use(errorHandler);
 
+        //middleware
 function errorHandler(error, req, res, next) {
   // do something with error before responding
   // like saving it to a database, sending a mail to the admin

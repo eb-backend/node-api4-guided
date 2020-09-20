@@ -10,13 +10,28 @@ router.get("/", (req, res) => {
   res.status(200).json({message: `Welcome ${process.env.COHORT}`, fact:process.env.FUN_FACT || "I have no fun fact"})
 });
 
+// router.get("/shouts",(req,res,next)=>{
 
-router.get("/shouts", (req, res, next) => {
-  Shouts.find()
-    .then(shouts => {
-      res.status(200).json(shouts);
-    })
-    .catch(error => next(error));
+//   Shouts.find()
+//     .then(shouts => {
+//       res.status(200).json(shouts);
+//     })
+//     .catch(error => next(error));
+// })
+
+router.get("/shouts", async (req, res, next) => {
+  try{
+      const data= await Shouts.find()
+  res.status(200).json(data)
+  }catch(err){
+    next(err)
+  }
+
+  // Shouts.find()
+  //   .then(shouts => {
+  //     res.status(200).json(shouts);
+  //   })
+  //   .catch(error => next(error));
 });
 
 router.post("/shouts", (req, res, next) => {

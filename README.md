@@ -6,6 +6,8 @@
   
 * env value needs to be secret with dotenv, extracts sensitive values . `.env` file is created
 
+* learned how to use async await to replace promise chaining
+
 * Specify a port on ENV
 
   ## .ENV
